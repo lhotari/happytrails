@@ -15,7 +15,7 @@ class RegionControllerTests {
 
     void testIndex() {
         controller.index()
-        assert "/regions" == response.redirectedUrl
+        assert "/region/list" == response.redirectedUrl
     }
 
     void testList() {
@@ -52,7 +52,7 @@ class RegionControllerTests {
         controller.show()
 
         assert flash.message != null
-        assert response.redirectedUrl == '/regions'
+        assert response.redirectedUrl == '/region/list'
 
         populateValidParams(params)
         def region = new Region(params)
@@ -70,7 +70,7 @@ class RegionControllerTests {
         controller.edit()
 
         assert flash.message != null
-        assert response.redirectedUrl == '/regions'
+        assert response.redirectedUrl == '/region/list'
 
 
         populateValidParams(params)
@@ -89,7 +89,7 @@ class RegionControllerTests {
         controller.update()
 
         assert flash.message != null
-        assert response.redirectedUrl == '/regions'
+        assert response.redirectedUrl == '/region/list'
 
         response.reset()
 
@@ -133,7 +133,7 @@ class RegionControllerTests {
     void testDelete() {
         controller.delete()
         assert flash.message != null
-        assert response.redirectedUrl == '/regions'
+        assert response.redirectedUrl == '/region/list'
 
         response.reset()
 
@@ -149,6 +149,6 @@ class RegionControllerTests {
 
         assert Region.count() == 0
         assert Region.get(region.id) == null
-        assert response.redirectedUrl == '/regions'
+        assert response.redirectedUrl == '/region/list'
     }
 }
